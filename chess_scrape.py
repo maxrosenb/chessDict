@@ -1,13 +1,12 @@
-import requests
 import json
 import re
 from bs4 import BeautifulSoup
 
-page = requests.get("https://en.wikipedia.org/wiki/Glossary_of_chess")
 soup = BeautifulSoup(open("better_glossary.html"), "html.parser")
 dts = soup.find_all("dt")
 dds = soup.find_all("dd")
 chess_dict = {}
+
 for i, dt in enumerate(dts):
     term = dt.text
     definition = dds[i].text
